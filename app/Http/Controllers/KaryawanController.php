@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
 {
-    public function index()
-    {
-        $karyawans = Karyawan::all();
-        return view('admin.karyawan.index', compact('karyawans'));
+public function index()
+{
+    if (auth()->user()->role !== 'admin') {
+        abort(403, 'Anda tidak memiliki akses.');
     }
+
+    $karyawans = Karyawan::all();
+    return view('admin.karyawan.index', compact('karyawans'));
+}
 
     public function create()
     {
