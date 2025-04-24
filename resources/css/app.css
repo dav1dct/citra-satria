@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* app.css */
+.custom-heading {
+    font-size: 3.75rem !important; /* Sama dengan text-6xl */
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}

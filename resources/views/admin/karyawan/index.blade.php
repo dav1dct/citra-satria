@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan</h1>
 <div class="container">
-    <h1>Data Karyawan</h1>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -10,10 +10,15 @@
     @endif
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
 
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered table-dark border-2 border-blue-500">
+        <thead class="table-dark text-center fw-bold fs-5">
             <tr>
-                <th>Nama</th><th>Email</th><th>Posisi</th><th>Departemen</th><th>Status</th><th>Aksi</th>
+                <th>Nama</th>
+                <th>Email</th>
+                <th>Posisi</th>
+                <th>Departemen</th>
+                <th>Status</th>
+                <th style="width: 1%; white-space: nowrap;">Aksi</th>
             </tr>
         </thead>
         <tbody>
