@@ -40,11 +40,14 @@
         </div>
 
         <div class="mb-3">
-            <label class="text-white">Status</label>
-            <input type="text" name="status" class="form-control" value="{{ old('status', $karyawan->status) }}" required>
-            @error('status')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+        <label class="text-white">Status</label>
+        <select name="status" class="form-control">
+        <option value="Aktif" {{ old('status', $karyawan->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+        <option value="Tidak Aktif" {{ old('status', $karyawan->status) == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+        </select>
+        @error('status')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
         </div>
 
         <button class="btn btn-primary">Perbarui</button>
