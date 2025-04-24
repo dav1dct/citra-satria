@@ -44,6 +44,7 @@
         <select name="status" class="form-control">
         <option value="Aktif" {{ old('status', $karyawan->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
         <option value="Tidak Aktif" {{ old('status', $karyawan->status) == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+        <option value="Menunggu" {{ old('status', $karyawan->status) == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
         </select>
         @error('status')
             <div class="text-danger">{{ $message }}</div>

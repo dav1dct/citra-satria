@@ -29,12 +29,14 @@ public function index()
             'email' => 'required|email|unique:karyawans',
             'posisi' => 'required',
             'departemen' => 'required',
+            'status' => 'required|in:Aktif,Tidak Aktif,Menunggu',
         ]);
 
         Karyawan::create(array_merge(
             $request->all(),
-            ['status' => 'Aktif', 'tanggal_masuk' => now()]
+            ['status' => $request->status ?? 'Menunggu', 'tanggal_masuk' => now()]
         ));
+        
 
         return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil ditambahkan!');
     }
