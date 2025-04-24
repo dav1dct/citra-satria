@@ -3,17 +3,12 @@
 @section('content')
 <div class="container">
     <h1>Data Karyawan</h1>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nama</th><th>Email</th><th>Posisi</th><th>Departemen</th><th>Status</th><th>Aksi</th>
+                <th>Nama</th><th>Email</th><th>Posisi</th><th>Departemen</th><th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +19,6 @@
                     <td>{{ $k->posisi }}</td>
                     <td>{{ $k->departemen }}</td>
                     <td>{{ $k->status }}</td>
-                    <td>
-                        <a href="{{ route('karyawan.edit', $k) }}" class="btn btn-warning">Edit</a>
-                    </td>
                 </tr>
             @endforeach
         </tbody>

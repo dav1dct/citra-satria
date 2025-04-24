@@ -38,5 +38,29 @@ public function index()
 
         return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil ditambahkan!');
     }
+        // Menampilkan form edit karyawan
+    public function edit(Karyawan $karyawan)
+    {
+        return view('admin.karyawan.edit', compact('karyawan'));
+    }
+
+    // Menyimpan perubahan data karyawan
+    public function update(Request $request, Karyawan $karyawan)
+    {
+        // Validasi input
+        $validated = $request->validate([
+            'nama_lengkap' => 'required|string|max:255',
+            'email' => 'required|email|unique:karyawans,email,' . $karyawan->id,
+            'posisi' => 'required|string|max:255',
+            'departemen' => 'required|string|max:255',
+            'status' => 'required|string|max:255',
+        ]);
+        
+
+        // Update data
+        $karyawan->update($validated);
+
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil diperbarui!');
+    }
 }
 

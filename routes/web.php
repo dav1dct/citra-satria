@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
     Route::get('/admin/karyawan/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');
     Route::post('/admin/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
+    Route::get('/admin/karyawan/{karyawan}/edit', [KaryawanController::class, 'edit'])->name('karyawan.edit');
+    Route::put('/admin/karyawan/{karyawan}', [KaryawanController::class, 'update'])->name('karyawan.update');
 });
 
 require __DIR__.'/auth.php';
