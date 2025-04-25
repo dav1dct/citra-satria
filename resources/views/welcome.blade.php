@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>PT Citra Satria Utama</title>
+        <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
         <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
 
         <!-- Fonts -->
@@ -57,13 +58,13 @@
             <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-[#161615] dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
                 <!-- Tulisan -->
                 <h1 class="font-bold mb-6 text-gray-900 dark:text-white" style="font-family: 'Iceland', sans-serif; font-weight: bold; font-size: 100px; text-align: center; line-height: 0.8;">
-                    CITRA<br>
-                    SATRIA<br>
-                    UTAMA
+                <span style="color: red;">CITRA</span><br>
+                <span style="color: green;">SAT</span><span style="color: lightblue;">RIA</span><br>
+                <span style="color: orange;">UT</span><span style="color: yellow;">AMA</span>
                 </h1>
             </div>
             <div class="bg-[#161615] dark:bg-[#161615] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg w-full lg:w-[438px] shrink-0 overflow-hidden shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] flex justify-center items-center">
-                <img src="{{ asset('assets/img/logoHD.png') }}" alt="Laravel Logo" class="w-full h-full object-contain" />
+                <img src="{{ asset('assets/img/logoHD.png') }}" alt="Logo PT Citra Satria Utama" class="w-full h-full object-contain" />
             </div>
         </main>
     </div>

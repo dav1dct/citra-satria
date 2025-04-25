@@ -13,11 +13,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Karyawan baru
-Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
-Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])->name('karyawanbaru.success');
 Route::get('/daftar', [KaryawanBaruController::class, 'create'])->name('karyawanbaru.create');
 Route::post('/karyawanbaru', [KaryawanBaruController::class, 'store'])->name('karyawanbaru.store');
+Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])->name('karyawanbaru.success');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
+    Route::put('/karyawanbaru/{id}/status', [KaryawanBaruController::class, 'updateStatus'])->name('karyawanbaru.updateStatus');
+});
+
+
 
 // Karyawan
 Route::middleware(['auth'])->group(function () {

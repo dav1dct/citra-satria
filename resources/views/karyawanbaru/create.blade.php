@@ -1,57 +1,76 @@
 @extends('layouts.form')
 
 @section('content')
-<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Formulir Karyawan Baru</h1>
-<div class="container">
-    <form action="{{ route('karyawanbaru.store') }}" method="POST">
-        @csrf
-        <div class="mb-3">
-            <label class="text-white">Nama Lengkap</label>
-            <input type="text" name="nama_lengkap" class="form-control" value="{{ old('nama_lengkap') }}" required>
-        </div>
-        <div class="mb-3">
-            <label class="text-white">Email</label>
-            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-        </div>
-        <div class="mb-3">
-            <label class="text-white">Nomor HP</label>
-            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp') }}" required>
-        </div>
-        <div class="mb-3">
-            <label class="text-white">Tanggal Lahir</label>
-            <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" required>
-        </div>
-        <div class="mb-3">
-    <label class="text-white">Pendidikan Terakhir</label>
-    <select name="pendidikan" class="form-control" required>
-        <option value="">-- Pilih Pendidikan Terakhir --</option>
-        <option value="SD" {{ old('pendidikan') == 'SD' ? 'selected' : '' }}>SD</option>
-        <option value="SMP" {{ old('pendidikan') == 'SMP' ? 'selected' : '' }}>SMP</option>
-        <option value="SMA" {{ old('pendidikan') == 'SMA' ? 'selected' : '' }}>SMA</option>
-        <option value="SMK" {{ old('pendidikan') == 'SMK' ? 'selected' : '' }}>SMK</option>
-        <option value="D3" {{ old('pendidikan') == 'D3' ? 'selected' : '' }}>D3</option>
-        <option value="S1" {{ old('pendidikan') == 'S1' ? 'selected' : '' }}>S1</option>
-        <option value="S2" {{ old('pendidikan') == 'S2' ? 'selected' : '' }}>S2</option>
-        <option value="S3" {{ old('pendidikan') == 'S3' ? 'selected' : '' }}>S3</option>
-        <option value="Lainnya" {{ old('pendidikan') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
-    </select>
-</div>
-        <div class="mb-3">
-            <label class="text-white">Jenis Kelamin</label>
-            <select name="gender" class="form-control" required>
-                <option value="">-- Pilih Jenis Kelamin --</option>
-                <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-            </select>
-        </div>
-        <div class="mb-3">
-            <label class="text-white">Alamat</label>
-            <textarea name="alamat" class="form-control" rows="3" required>{{ old('alamat') }}</textarea>
-        </div>
-        <!-- <button type="submit" class="btn btn-success">Simpan</button> -->
-        <x-primary-button type="submit" class="ms-3">
-                {{ __('Daftar') }}
-        </x-primary-button>
-    </form>
-</div>
+    <h1 class="text-white text-center mb-6 h1 bg-primary p-3 rounded">Formulir Karyawan Baru</h1>
+
+    <div class="w-full max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md">
+        <form action="{{ route('karyawanbaru.store') }}" method="POST">
+            @csrf
+
+            {{-- Nama Lengkap --}}
+            <div class="mb-4">
+                <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
+                <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap')" required />
+                <x-input-error :messages="$errors->get('nama_lengkap')" class="mt-2" />
+            </div>
+
+            {{-- Email --}}
+            <div class="mb-4">
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            </div>
+
+            {{-- Nomor HP --}}
+            <div class="mb-4">
+                <x-input-label for="no_hp" :value="__('Nomor HP')" />
+                <x-text-input id="no_hp" class="block mt-1 w-full" type="text" name="no_hp" :value="old('no_hp')" required />
+                <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
+            </div>
+
+            {{-- Tanggal Lahir --}}
+            <div class="mb-4">
+                <x-input-label for="tanggal_lahir" :value="__('Tanggal Lahir')" />
+                <x-text-input id="tanggal_lahir" class="block mt-1 w-full" type="date" name="tanggal_lahir" :value="old('tanggal_lahir')" required />
+                <x-input-error :messages="$errors->get('tanggal_lahir')" class="mt-2" />
+            </div>
+
+            {{-- Pendidikan Terakhir --}}
+            <div class="mb-4">
+                <x-input-label for="pendidikan" :value="__('Pendidikan Terakhir')" />
+                <select name="pendidikan" id="pendidikan" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white" required>
+                    <option value="">-- Pilih Pendidikan Terakhir --</option>
+                    @foreach(['SD', 'SMP', 'SMA', 'SMK', 'D3', 'S1', 'S2', 'S3', 'Lainnya'] as $jenjang)
+                        <option value="{{ $jenjang }}" {{ old('pendidikan') == $jenjang ? 'selected' : '' }}>{{ $jenjang }}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('pendidikan')" class="mt-2" />
+            </div>
+
+            {{-- Jenis Kelamin --}}
+            <div class="mb-4">
+                <x-input-label for="gender" :value="__('Jenis Kelamin')" />
+                <select name="gender" id="gender" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white" required>
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                </select>
+                <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+            </div>
+
+            {{-- Alamat --}}
+            <div class="mb-4">
+                <x-input-label for="alamat" :value="__('Alamat')" />
+                <textarea name="alamat" id="alamat" rows="3" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white">{{ old('alamat') }}</textarea>
+                <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
+            </div>
+
+            {{-- Tombol --}}
+            <div class="flex justify-end mt-6">
+                <x-primary-button>
+                    {{ __('Daftar') }}
+                </x-primary-button>
+            </div>
+        </form>
+    </div>
 @endsection

@@ -3,10 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-        <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
-
+        <title>PT Citra Satria Utama</title>
+        <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -27,10 +25,11 @@
             <!-- Gambar -->
             <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-[#161615] dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
                 <!-- Tulisan -->
-                <h1 class="font-bold mb-6 text-gray-900 dark:text-white" style="sans-serif; font-weight: bold; font-size: 100px; text-align: center; line-height: 0.8;">
+                <h1 class="font-bold mb-6 text-gray-900 dark:text-white" style="sans-serif; font-weight: bold; font-size: 100px; text-align: center; line-height: 1.0;">
                     Daftar <br>
                     Berhasil<br>
                 </h1>
+                <h4 class="font-bold mb-4 text-gray-900 dark:text-white" style="font-weight: bold; font-size: 18px; text-align: center; line-height: 1.0;">DATA PENDAFTARAN ANDA AKAN SEGERA KAMI PROSES</h4>
             </div>
             <div class="bg-[#161615] dark:bg-[#161615] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg w-full lg:w-[438px] shrink-0 overflow-hidden shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] flex justify-center items-center">
                 <img src="{{ asset('assets/img/logoHD.png') }}" alt="Laravel Logo" class="w-full h-full object-contain" />
@@ -42,7 +41,7 @@
             <a
                 href="{{ url('/') }}"
                 class="inline-block w-full px-8 py-4 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-lg leading-normal text-center">
-                Kembali ke halaman awal
+                KEMBALI KE HALAMAN UTAMA
             </a>
         </div>
     </body>
