@@ -40,5 +40,22 @@ class KaryawanBaruController extends Controller
     {
         return view('karyawanbaru.success');
     }
+    public function updateStatus(Request $request, $id)
+    {
+    $request->validate([
+        'status' => 'required|in:Menunggu,Diterima,Ditolak',
+    ]);
 
+    $karyawan = KaryawanBaru::findOrFail($id);
+    $karyawan->status = $request->status;
+    $karyawan->save();
+
+    return redirect()->route('karyawanbaru.index')->with('success', 'Status berhasil diperbarui.');
+    }
+    public function edit($id)
+    {
+        $karyawan = KaryawanBaru::findOrFail($id);
+        return view('karyawanbaru.edit', compact('karyawan'));
+    }        
 }
+    

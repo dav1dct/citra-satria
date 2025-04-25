@@ -20,11 +20,10 @@ Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])-
 Route::middleware(['auth'])->group(function () {
     Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
     Route::put('/karyawanbaru/{id}/status', [KaryawanBaruController::class, 'updateStatus'])->name('karyawanbaru.updateStatus');
+    Route::get('/karyawanbaru/{id}/edit', [KaryawanBaruController::class, 'edit'])->name('karyawanbaru.edit');
+
 });
 
-
-
-// Karyawan
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
     Route::get('/admin/karyawan/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');

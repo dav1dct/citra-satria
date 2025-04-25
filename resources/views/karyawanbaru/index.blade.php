@@ -15,6 +15,7 @@
                 <th>Gender</th>
                 <th>Alamat</th>
                 <th>Status</th>
+                <th style="width: 1%; white-space: nowrap;">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@
                     <td>{{ $kb->gender }}</td>
                     <td>{{ $kb->alamat }}</td>
                     <td>{{ $kb->status }}</td>
+                    <td>
+                        <a href="{{ route('karyawanbaru.edit', $kb) }}" class="btn btn-warning">Edit</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
