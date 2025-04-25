@@ -70,7 +70,7 @@
             <!-- Tombol daftar karyawan -->
             <div class="mt-auto w-full lg:w-[438px]">
             <a
-                href="{{ route('register') }}"
+                href="{{ url('/daftar') }}"
                 class="inline-block w-full px-8 py-4 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-lg leading-normal text-center"> <!-- Increased padding and text size -->
                 FORM PENDAFTARAN KARYAWAN BARU
             </a>

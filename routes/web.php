@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\KaryawanBaruController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,12 +13,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Karyawan baru
+Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
+Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])->name('karyawanbaru.success');
+Route::get('/daftar', [KaryawanBaruController::class, 'create'])->name('karyawanbaru.create');
+Route::post('/karyawanbaru', [KaryawanBaruController::class, 'store'])->name('karyawanbaru.store');
 
+// Karyawan
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
     Route::get('/admin/karyawan/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');
