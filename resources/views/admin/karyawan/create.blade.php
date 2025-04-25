@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Tambah Karyawan Baru</h1>
+<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Tambah Karyawan</h1>
 <div class="container">
     <form action="{{ route('karyawan.store') }}" method="POST">
         @csrf

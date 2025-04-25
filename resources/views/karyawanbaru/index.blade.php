@@ -1,9 +1,8 @@
 <!-- @extends('layouts.app')
 
 @section('content') -->
+<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan Baru</h1>
 <div class="container">
-    <h1>Data Karyawan Baru</h1>
-
     <table class="table table-bordered table-dark">
         <thead>
             <tr>
