@@ -4,7 +4,7 @@
     <h1 class="text-white text-center mb-6 h1 bg-primary p-3 rounded">Formulir Karyawan Baru</h1>
 
     <div class="w-full max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md">
-        <form action="{{ route('karyawanbaru.store') }}" method="POST">
+        <form action="{{ route('karyawanbaru.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- Nama Lengkap --}}
@@ -63,6 +63,27 @@
                 <x-input-label for="alamat" :value="__('Alamat')" />
                 <textarea name="alamat" id="alamat" rows="3" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white" style="background-color: white; color: black; border: 1px solid #ccc;">{{ old('alamat') }}</textarea>
                 <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
+            </div>
+
+            {{-- Upload CV --}}
+            <div class="mb-4">
+                <x-input-label for="cv" :value="__('Upload CV')" />
+                <x-text-input id="cv" class="block mt-1 w-full" type="file" name="cv" style="background-color: white; color: black; border: 1px solid #ccc;" required />
+                <x-input-error :messages="$errors->get('cv')" class="mt-2" />
+            </div>
+
+            {{-- Upload Foto KTP --}}
+            <div class="mb-4">
+                <x-input-label for="foto_ktp" :value="__('Upload Foto KTP')" />
+                <x-text-input id="foto_ktp" class="block mt-1 w-full" type="file" name="foto_ktp" style="background-color: white; color: black; border: 1px solid #ccc;" required />
+                <x-input-error :messages="$errors->get('foto_ktp')" class="mt-2" />
+            </div>
+
+            {{-- Upload Ijazah --}}
+            <div class="mb-4">
+                <x-input-label for="ijazah" :value="__('Upload Ijazah')" />
+                <x-text-input id="ijazah" class="block mt-1 w-full" type="file" name="ijazah" style="background-color: white; color: black; border: 1px solid #ccc;" required />
+                <x-input-error :messages="$errors->get('ijazah')" class="mt-2" />
             </div>
 
             {{-- Tombol --}}

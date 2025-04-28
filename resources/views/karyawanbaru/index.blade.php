@@ -15,6 +15,9 @@
                 <th>Gender</th>
                 <th>Alamat</th>
                 <th>Status</th>
+                <th>CV</th>
+                <th>Foto KTP</th>
+                <th>Ijazah</th>
                 <th style="width: 1%; white-space: nowrap;">Aksi</th>
             </tr>
         </thead>
@@ -30,6 +33,17 @@
                     <td>{{ $kb->gender }}</td>
                     <td>{{ $kb->alamat }}</td>
                     <td>{{ $kb->status }}</td>
+                     <!-- File Links -->
+                     <td>
+                        <a href="{{ Storage::url($kb->cv) }}" target="_blank" class="btn btn-info">Download CV</a>
+                    </td>
+                    <td>
+                        <img src="{{ Storage::url($kb->foto_ktp) }}" alt="Foto KTP" width="50" class="img-fluid">
+                    </td>
+                    <td>
+                        <a href="{{ Storage::url($kb->ijazah) }}" target="_blank" class="btn btn-info">Download Ijazah</a>
+                    </td>
+                    
                     <td>
                         <a href="{{ route('karyawanbaru.edit', $kb) }}" class="btn btn-warning">Edit</a>
                     </td>

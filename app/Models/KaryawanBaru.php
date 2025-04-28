@@ -9,7 +9,7 @@ class KaryawanBaru extends Model
 {
     use HasFactory;
 
-    protected $table = 'karyawan_barus';  // Pastikan nama tabel sudah benar
+    protected $table = 'karyawan_barus';
 
     protected $fillable = [
         'nama_lengkap',
@@ -19,6 +19,9 @@ class KaryawanBaru extends Model
         'pendidikan',
         'gender',
         'alamat',
-        'status', // kolom status
+        'status',
+        'cv',
+        'foto_ktp',
+        'ijazah',
     ];
 }
