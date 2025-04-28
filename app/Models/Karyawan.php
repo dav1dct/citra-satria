@@ -10,16 +10,20 @@ class Karyawan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_lengkap',
-        'email',
-        'telepon',
-        'jenis_kelamin',
-        'tanggal_lahir',
-        'alamat',
-        'posisi',
-        'departemen',
-        'status',
-        'tanggal_masuk'
+        'nik',             
+        'nama_lengkap',   
+        'email',             
+        'telepon',           
+        'jenis_kelamin',    
+        'tanggal_lahir',     
+        'alamat',         
+        'posisi',          
+        'departemen',    
+        'status',            
+        'tanggal_masuk',     
+        'tanggal_keluar',    
+        'status_kerja',       
+        'status_pernikahan', 
+        'no_hp',              
     ];
 }
-

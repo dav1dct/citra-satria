@@ -8,6 +8,14 @@
         @method('PUT')
 
         <div class="mb-3">
+            <label class="text-white">NIK</label>
+            <input type="text" name="nik" class="form-control" value="{{ old('nik', $karyawan->nik) }}" required>
+            @error('nik')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label class="text-white">Nama Lengkap</label>
             <input type="text" name="nama_lengkap" class="form-control" value="{{ old('nama_lengkap', $karyawan->nama_lengkap) }}" required>
             @error('nama_lengkap')
@@ -40,18 +48,62 @@
         </div>
 
         <div class="mb-3">
-        <label class="text-white">Status</label>
-        <select name="status" class="form-control">
-        <option value="Aktif" {{ old('status', $karyawan->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
-        <option value="Tidak Aktif" {{ old('status', $karyawan->status) == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-        <option value="Menunggu" {{ old('status', $karyawan->status) == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
-        </select>
-        @error('status')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
+            <label class="text-white">Status Kerja</label>
+            <select name="status_kerja" class="form-control">
+                <option value="Tetap" {{ old('status_kerja', $karyawan->status_kerja) == 'Tetap' ? 'selected' : '' }}>Tetap</option>
+                <option value="Tidak Tetap" {{ old('status_kerja', $karyawan->status_kerja) == 'Tidak Tetap' ? 'selected' : '' }}>Tidak Tetap</option>
+            </select>
         </div>
 
-        <button class="btn btn-primary">Perbarui</button>
+        <div class="mb-3">
+            <label class="text-white">Status Pernikahan</label>
+            <select name="status_pernikahan" class="form-control">
+                <option value="Nikah" {{ old('status_pernikahan', $karyawan->status_pernikahan) == 'Nikah' ? 'selected' : '' }}>Nikah</option>
+                <option value="Tidak Nikah" {{ old('status_pernikahan', $karyawan->status_pernikahan) == 'Tidak Nikah' ? 'selected' : '' }}>Tidak Nikah</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">Alamat</label>
+            <input type="text" name="alamat" class="form-control" value="{{ old('alamat', $karyawan->alamat) }}" required>
+            @error('alamat')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">No HP</label>
+            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp', $karyawan->no_hp) }}" required>
+            @error('no_hp')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">Tanggal Lahir</label>
+            <input type="date" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir', $karyawan->tanggal_lahir) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">Tanggal Masuk</label>
+            <input type="date" name="tanggal_masuk" class="form-control" value="{{ old('tanggal_masuk', $karyawan->tanggal_masuk) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">Tanggal Keluar</label>
+            <input type="date" name="tanggal_keluar" class="form-control" value="{{ old('tanggal_keluar', $karyawan->tanggal_keluar) }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="text-white">Status</label>
+            <select name="status" class="form-control">
+                <option value="Aktif" {{ old('status', $karyawan->status) == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                <option value="Tidak Aktif" {{ old('status', $karyawan->status) == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                <option value="Menunggu" {{ old('status', $karyawan->status) == 'Menunggu' ? 'selected' : '' }}>Menunggu</option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Perbarui</button>
     </form>
 </div>
 @endsection
