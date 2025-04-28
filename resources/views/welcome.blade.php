@@ -22,7 +22,7 @@
     <body class="bg-[#161615] dark:bg-[#161615] text-[#EDEDEC] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 border-b-2 border-white">
     <!-- Logo & Nama Perusahaan -->
-    <div class="flex items-center justify-between w-full">
+    <div class="flex items-center justify-between w-full flex-wrap">
         <!-- Logo -->
         <div class="flex items-center gap-2">
             <img src="{{ asset('assets/img/logo.png') }}" alt="Logo PT Citra Satria Utama" class="w-16 h-16">
@@ -30,6 +30,7 @@
                 <span style="color: red;">CITRA</span><br><span style="color: green;">SAT</span><span style="color: lightblue;">RIA</span><br>
                 <span style="color: orange;">UT</span><span style="color: yellow;">AMA</span>
             </h1>
+            <p class="text-white">Komplek Pergudangan Skypark Bizz, Jl. Bypass Alang-Alang Lebar Blok A4-A7,<br> Talang Kelapa, Alang-Alang Lebar, Palembang City, South Sumatra 30154</p>
         </div>
         
         <!-- Tombol Login/Register -->
