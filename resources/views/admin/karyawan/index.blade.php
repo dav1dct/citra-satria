@@ -11,7 +11,7 @@
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
 
     <table class="table table-bordered table-dark border-2" style="border: 2px solid #0d6efd;">
-        <thead class="table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
+        <thead class="align-middle table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>
                 <th style="width: 60px">No</th>
                 <th>NIK</th>

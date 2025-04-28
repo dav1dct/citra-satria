@@ -32,9 +32,9 @@ class KaryawanBaruController extends Controller
             'pendidikan' => 'required|string',
             'gender' => 'required|string',
             'alamat' => 'required|string',
-            'cv' => 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'foto_ktp' => 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
-            'ijazah' => 'required|file|mimes:pdf,jpg,jpeg,png|max:4096',
+            'cv' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'foto_ktp' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'ijazah' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
     
         // Upload file ke storage/app/public/uploads/
