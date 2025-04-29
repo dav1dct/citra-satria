@@ -33,7 +33,7 @@ class KaryawanBaruController extends Controller
             'gender' => 'required|string',
             'alamat' => 'required|string',
             'cv' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
-            'foto_ktp' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'foto_ktp' => 'required|file|mimes:jpg,jpeg,png|max:10240',
             'ijazah' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
     
