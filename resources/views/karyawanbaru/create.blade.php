@@ -67,21 +67,28 @@
                 <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
             </div>
             <div class="mb-4">
-                <x-input-label for="cv" :value="__('Upload Surat Lamaran')" />
+                <x-input-label for="surat_lamaran" :value="__('Upload Surat Lamaran')" />
+                <h4 class="text-white">Format: .pdf | .jpg | .jpeg | .png</h4>
+                <x-text-input id="surat_lamaran" class="block mt-1 w-full" type="file" name="surat_lamaran" style="background-color: white; color: black; border: 1px solid #ccc;" required />
+                <x-input-error :messages="$errors->get('surat_lamaran')" class="mt-2" />
+            </div>
+
+            <div class="mb-4">
+                <x-input-label for="foto_identitas" :value="__('Upload Foto Identitas')" />
+                <h4 class="text-white">Format: .jpg | .jpeg | .png</h4>
+                <x-text-input id="foto_identitas" class="block mt-1 w-full" type="file" name="foto_identitas" style="background-color: white; color: black; border: 1px solid #ccc;" required />
+                <x-input-error :messages="$errors->get('foto_identitas')" class="mt-2" />
+            </div>
+
+            <div class="mb-4">
+                <x-input-label for="cv" :value="__('Upload CV')" />
                 <h4 class="text-white">Format: .pdf | .jpg | .jpeg | .png</h4>
                 <x-text-input id="cv" class="block mt-1 w-full" type="file" name="cv" style="background-color: white; color: black; border: 1px solid #ccc;" required />
                 <x-input-error :messages="$errors->get('cv')" class="mt-2" />
             </div>
 
             <div class="mb-4">
-                <x-input-label for="foto_ktp" :value="__('Upload Foto Identitas')" />
-                <h4 class="text-white">Format: .jpg | .jpeg | .png</h4>
-                <x-text-input id="foto_ktp" class="block mt-1 w-full" type="file" name="foto_ktp" style="background-color: white; color: black; border: 1px solid #ccc;" required />
-                <x-input-error :messages="$errors->get('foto_ktp')" class="mt-2" />
-            </div>
-    
-            <div class="mb-4">
-                <x-input-label for="ijazah" :value="__('Upload Dokumen (CV & Ijazah)')" />
+                <x-input-label for="ijazah" :value="__('Upload Ijazah')" />
                 <h4 class="text-white">Format: .pdf | .jpg | .jpeg | .png</h4>
                 <x-text-input id="ijazah" class="block mt-1 w-full" type="file" name="ijazah" style="background-color: white; color: black; border: 1px solid #ccc;" required />
                 <x-input-error :messages="$errors->get('ijazah')" class="mt-2" />

@@ -8,7 +8,9 @@
             {{ session('success') }}
         </div>
     @endif
-    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+    @if(auth()->user()->role === 'admin')
+        <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+    @endif
 
     <table class="table table-bordered table-dark border-2" style="border: 2px solid #0d6efd;">
         <thead class="align-middle table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
@@ -25,7 +27,9 @@
                 <th>Status</th>
                 <th>Tanggal Masuk</th>
                 <th>Tanggal Keluar</th>
+                @if(auth()->user()->role === 'admin')
                 <th style="width: 1%; white-space: nowrap;">Aksi</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -49,9 +53,11 @@
                             -
                         @endif
                     </td>
+                    @if(auth()->user()->role === 'admin')
                     <td>
-                        <a href="{{ route('karyawan.edit', $k) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('karyawan.edit', $k) }}" class="btn btn-warning">Edit</a>
                     </td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

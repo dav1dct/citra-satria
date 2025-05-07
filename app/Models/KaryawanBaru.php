@@ -21,8 +21,9 @@ class KaryawanBaru extends Model
         'gender',
         'alamat',
         'status',
+        'surat_lamaran',
+        'foto_identitas',
         'cv',
-        'foto_ktp',
         'ijazah',
     ];
 }

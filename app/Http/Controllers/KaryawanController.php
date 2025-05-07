@@ -9,8 +9,6 @@ class KaryawanController extends Controller
 {
     public function index()
     {
-
-
         $karyawans = Karyawan::all();
         return view('admin.karyawan.index', compact('karyawans'));
     }
@@ -25,6 +23,10 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+
         $request->validate([
             'nik' => 'required|numeric|unique:karyawans',
             'nama_lengkap' => 'required|string|max:255',
@@ -53,13 +55,16 @@ class KaryawanController extends Controller
     public function edit(Karyawan $karyawan)
     {
         if (auth()->user()->role !== 'admin') {
-            abort(403, 'Anda tidak memiliki akses.');
+            abort(403, 'Hanya admin yang dapat mengedit data.');
         }
         return view('admin.karyawan.edit', compact('karyawan'));
     }
 
     public function update(Request $request, Karyawan $karyawan)
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Hanya admin yang dapat mengedit data.');
+        }
         $validated = $request->validate([
             'nik' => 'required|numeric|unique:karyawans,nik,' . $karyawan->id, 
             'nama_lengkap' => 'required|string|max:255',

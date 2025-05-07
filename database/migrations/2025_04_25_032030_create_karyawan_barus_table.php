@@ -22,8 +22,9 @@ return new class extends Migration
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->text('alamat');
             $table->enum('status', ['Diterima', 'Ditolak', 'Menunggu'])->default('Menunggu');
+            $table->string('surat_lamaran');
+            $table->string('foto_identitas');
             $table->string('cv');
-            $table->string('foto_ktp');
             $table->string('ijazah');
             $table->timestamps();
         });

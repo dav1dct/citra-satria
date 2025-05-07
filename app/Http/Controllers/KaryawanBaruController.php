@@ -9,7 +9,7 @@ class KaryawanBaruController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role !== 'admin') {
+        if (auth()->user()->role !== 'admin' && auth()->user()->role !== 'hsd') {
             abort(403, 'Anda tidak memiliki akses.');
         }
 
@@ -33,17 +33,17 @@ class KaryawanBaruController extends Controller
             'pendidikan' => 'required|string',
             'gender' => 'required|string',
             'alamat' => 'required|string',
+            'surat_lamaran' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'foto_identitas' => 'required|file|mimes:jpg,jpeg,png|max:10240',
             'cv' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
-            'foto_ktp' => 'required|file|mimes:jpg,jpeg,png|max:10240',
             'ijazah' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
     
-        // Upload file ke storage/app/public/uploads/
-        $cvPath = $request->file('cv')->store('uploads', 'public');
-        $fotoKtpPath = $request->file('foto_ktp')->store('uploads', 'public');
-        $ijazahPath = $request->file('ijazah')->store('uploads', 'public');
-    
-        // Simpan data ke database
+        $cvPath = $request->file('cv')->store('uploads/cv', 'public');
+        $fotoIdentitasPath = $request->file('foto_identitas')->store('uploads/foto', 'public');
+        $ijazahPath = $request->file('ijazah')->store('uploads/ijazah', 'public');
+        $suratPath = $request->file('surat_lamaran')->store('uploads/surat', 'public');        
+
         KaryawanBaru::create([
             'kode_lamaran' => $validated['kode_lamaran'],
             'nama_lengkap' => $validated['nama_lengkap'],
@@ -54,8 +54,9 @@ class KaryawanBaruController extends Controller
             'gender' => $validated['gender'],
             'alamat' => $validated['alamat'],
             'status' => 'Menunggu',
-            'cv' => $cvPath,         // ← Upload path
-            'foto_ktp' => $fotoKtpPath,
+            'surat_lamaran' => $suratPath,
+            'foto_identitas' => $fotoIdentitasPath,
+            'cv' => $cvPath,
             'ijazah' => $ijazahPath,
         ]);
     
@@ -68,6 +69,11 @@ class KaryawanBaruController extends Controller
     }
     public function updateStatus(Request $request, $id)
     {
+    
+    if (auth()->user()->role !== 'admin') {
+        abort(403, 'Hanya admin yang dapat mengedit data.');
+    }
+
     $request->validate([
         'status' => 'required|in:Menunggu,Diterima,Ditolak',
     ]);
@@ -80,6 +86,10 @@ class KaryawanBaruController extends Controller
     }
     public function edit($id)
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Hanya admin yang dapat mengedit data.');
+        }
+        
         $karyawan = KaryawanBaru::findOrFail($id);
         return view('karyawanbaru.edit', compact('karyawan'));
     }        
