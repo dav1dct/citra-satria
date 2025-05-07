@@ -12,6 +12,7 @@ class KaryawanBaru extends Model
     protected $table = 'karyawan_barus';
 
     protected $fillable = [
+        'kode_lamaran',
         'nama_lengkap',
         'email',
         'no_hp',

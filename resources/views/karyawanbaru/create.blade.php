@@ -6,7 +6,16 @@
     <div class="w-full max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md">
         <form action="{{ route('karyawanbaru.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            <div class="mb-4">
+                <x-input-label for="kode_lamaran" :value="__('Kode Lamaran')" />
+                <select name="kode_lamaran" id="kode_lamaran" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white" style="background-color: white; color: black; border: 1px solid #ccc;" required>
+                    <option value="">-- Pilih Kode Lamaran --</option>
+                    @foreach(['ADM', 'CSR', 'ACC', 'INK', 'CLM', 'TAX', 'SLS', 'HLP', 'CHK', 'DRV', 'DSS'] as $kode)
+                        <option value="{{ $kode }}" {{ old('kode_lamaran') == $kode ? 'selected' : '' }}>{{ $kode }}</option>
+                    @endforeach
+                </select>
+                <x-input-error :messages="$errors->get('kode_lamaran')" class="mt-2" />
+            </div>
             <div class="mb-4">
                 <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
                 <x-text-input id="nama_lengkap" class="block mt-1 w-full" type="text" name="nama_lengkap" :value="old('nama_lengkap')" required style="background-color: white; color: black; border: 1px solid #ccc;" />
@@ -57,21 +66,23 @@
                 <textarea name="alamat" id="alamat" rows="3" class="block mt-1 w-full rounded border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:text-white" style="background-color: white; color: black; border: 1px solid #ccc;">{{ old('alamat') }}</textarea>
                 <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
             </div>
-            <h4 class="text-white">Berupa file dengan format:<br> .pdf | .jpg | .jpeg | .png</h4>
             <div class="mb-4">
-                <x-input-label for="cv" :value="__('Upload CV')" />
+                <x-input-label for="cv" :value="__('Upload Surat Lamaran')" />
+                <h4 class="text-white">Format: .pdf | .jpg | .jpeg | .png</h4>
                 <x-text-input id="cv" class="block mt-1 w-full" type="file" name="cv" style="background-color: white; color: black; border: 1px solid #ccc;" required />
                 <x-input-error :messages="$errors->get('cv')" class="mt-2" />
             </div>
 
             <div class="mb-4">
-                <x-input-label for="foto_ktp" :value="__('Upload Foto KTP')" />
+                <x-input-label for="foto_ktp" :value="__('Upload Foto Identitas')" />
+                <h4 class="text-white">Format: .jpg | .jpeg | .png</h4>
                 <x-text-input id="foto_ktp" class="block mt-1 w-full" type="file" name="foto_ktp" style="background-color: white; color: black; border: 1px solid #ccc;" required />
                 <x-input-error :messages="$errors->get('foto_ktp')" class="mt-2" />
             </div>
-
+    
             <div class="mb-4">
-                <x-input-label for="ijazah" :value="__('Upload Ijazah')" />
+                <x-input-label for="ijazah" :value="__('Upload Dokumen (CV & Ijazah)')" />
+                <h4 class="text-white">Format: .pdf | .jpg | .jpeg | .png</h4>
                 <x-text-input id="ijazah" class="block mt-1 w-full" type="file" name="ijazah" style="background-color: white; color: black; border: 1px solid #ccc;" required />
                 <x-input-error :messages="$errors->get('ijazah')" class="mt-2" />
             </div>

@@ -7,7 +7,10 @@
         <form action="{{ route('karyawanbaru.updateStatus', $karyawan->id) }}" method="POST">
             @csrf
             @method('PUT')
-
+            <div class="mb-4">
+                <x-input-label for="kode_lamaran" :value="__('Kode Lamaran')" />
+                <x-text-input id="kode_lamaran" class="block mt-1 w-full bg-gray-700 text-white" type="text" name="kode_lamaran" :value="$karyawan->kode_lamaran" disabled />
+            </div>
             <div class="mb-4">
                 <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
                 <x-text-input id="nama_lengkap" class="block mt-1 w-full bg-gray-700 text-white" type="text" name="nama_lengkap" :value="$karyawan->nama_lengkap" disabled />

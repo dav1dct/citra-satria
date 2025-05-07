@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('karyawan_barus', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_lamaran');
             $table->string('nama_lengkap');
             $table->string('email')->unique();
             $table->string('no_hp');

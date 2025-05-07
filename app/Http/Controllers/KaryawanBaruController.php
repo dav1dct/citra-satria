@@ -25,6 +25,7 @@ class KaryawanBaruController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'kode_lamaran' => 'required|string',
             'nama_lengkap' => 'required|string|max:255',
             'email' => 'required|email|unique:karyawan_barus,email',
             'no_hp' => 'required|string|max:20',
@@ -44,6 +45,7 @@ class KaryawanBaruController extends Controller
     
         // Simpan data ke database
         KaryawanBaru::create([
+            'kode_lamaran' => $validated['kode_lamaran'],
             'nama_lengkap' => $validated['nama_lengkap'],
             'email' => $validated['email'],
             'no_hp' => $validated['no_hp'],

@@ -7,6 +7,7 @@
         <thead class="align-middle table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>
                 <th style="width: 60px">No</th>
+                <th>Kode Lamaran</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th>No HP</th>
@@ -25,6 +26,7 @@
             @foreach($karyawanbarus as $index => $kb)
                 <tr>
                      <td class="text-center">{{ $index + 1 }}</td>
+                    <td>{{ $kb->kode_lamaran }}</td>
                     <td>{{ $kb->nama_lengkap }}</td>
                     <td>{{ $kb->email }}</td>
                     <td>{{ $kb->no_hp }}</td>

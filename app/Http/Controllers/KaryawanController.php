@@ -9,9 +9,7 @@ class KaryawanController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role !== 'admin') {
-            abort(403, 'Anda tidak memiliki akses.');
-        }
+
 
         $karyawans = Karyawan::all();
         return view('admin.karyawan.index', compact('karyawans'));
@@ -19,6 +17,9 @@ class KaryawanController extends Controller
 
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
         return view('admin.karyawan.create');
     }
 
@@ -51,6 +52,9 @@ class KaryawanController extends Controller
 
     public function edit(Karyawan $karyawan)
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
         return view('admin.karyawan.edit', compact('karyawan'));
     }
 
