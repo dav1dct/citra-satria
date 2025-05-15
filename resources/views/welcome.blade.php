@@ -24,7 +24,7 @@
         @endif
     </head>
     <body class="bg-[#161615] dark:bg-[#161615] text-[#EDEDEC] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-    <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 border-b-2 border-white">
+    <header class="w-full lg:max-w-4xl max-w-[435px] text-sm mb-6 border-b-2 border-black dark:border-white">
     <!-- Logo & Nama Perusahaan -->
     <div class="flex items-center justify-between w-full flex-wrap">
         <!-- Logo -->
