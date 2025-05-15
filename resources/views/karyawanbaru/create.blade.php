@@ -1,7 +1,7 @@
 @extends('layouts.form')
 
 @section('content')
-    <h1 class="text-white text-center mb-6 h1 bg-primary p-3 rounded">Formulir Karyawan Baru</h1>
+    <h1 class="text-white text-center mb-6 h1 p-3 rounded">Formulir Karyawan Baru</h1>
 
     <div class="w-full max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md">
         <form action="{{ route('karyawanbaru.store') }}" method="POST" enctype="multipart/form-data">

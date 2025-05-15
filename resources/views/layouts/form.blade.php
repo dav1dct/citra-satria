@@ -7,10 +7,11 @@
 
         <title>PT Citra Satria Utama</title>
         <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
+        <!-- CoreUI CSS -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- CoreUI JS -->
+        <script src="{{ asset('public/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,7 +20,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-900 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-5 h-5 fill-current text-gray-500" />
+                    <x-application-logo class="fill-current text-gray-500" />
                 </a>
             </div>
 

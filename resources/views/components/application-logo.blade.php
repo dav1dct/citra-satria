@@ -1,1 +1,1 @@
-<img src="{{ asset('assets/img/logo.png') }}" alt="Laravel Logo" class="w-full h-full object-contain" />
+<img src="{{ asset('assets/img/logosmall.png') }}" alt="Logo CSU" class="w-full h-full object-contain" />

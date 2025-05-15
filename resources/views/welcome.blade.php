@@ -6,7 +6,11 @@
 
         <title>PT Citra Satria Utama</title>
         <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png">
-        <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet">
+        <!-- CoreUI CSS -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+        <!-- CoreUI JS -->
+        <script src="{{ asset('public/vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -28,24 +32,24 @@
             <img src="{{ asset('assets/img/logoFull.png') }}" alt="Logo PT Citra Satria Utama" class="w-16 h-16">
             <h1 class="text-white font-bold text-2xl" style="font-family: 'BD-Wurst', sans-serif;">
             </h1>
-            <p style="font-family: 'BD-Wurst'" class="text-black dark:text-white">Komplek Pergudangan Skypark Bizz,<br>  Jl. Bypass Alang-Alang Lebar Blok A4-A7,<br> Talang Kelapa, Alang-Alang Lebar, Palembang City, South Sumatra 30154</p>
+            <!-- <p style="font-family: 'BD-Wurst'" class="text-black dark:text-white">Komplek Pergudangan Skypark Bizz,<br>  Jl. Bypass Alang-Alang Lebar Blok A4-A7,<br> Talang Kelapa, Alang-Alang Lebar,<br> Palembang City, South Sumatra 30154</p> -->
         </div>
         
         <!-- Tombol Login/Register -->
         <div class="flex items-center gap-4">
             @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+                <nav class="flex flex-col items-start gap-2">
                     @auth
                         <a
                             href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#EDEDEC] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                            class="inline-flex items-center justify-center px-2 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#EDEDEC] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
                         >
                             Dashboard
                         </a>
                     @else
                         <a
                             href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#EDEDEC] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                            class="inline-flex items-center justify-center px-2 py-1.5 dark:text-[#EDEDEC] text-[#EDEDEC] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
                         >
                             Log in
                         </a>
@@ -53,7 +57,7 @@
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#EDEDEC] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                                class="inline-flex items-center justify-center px-2 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#EDEDEC] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
                             >
                                 Register
                             </a>
@@ -84,6 +88,7 @@
             <!-- Tombol daftar karyawan -->
             <div class="mt-auto w-full lg:w-[438px]">
             <a
+                style="font-family: 'BD-Wurst'"
                 href="{{ url('/daftar') }}"
                 class="inline-block w-full px-8 py-4 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-lg leading-normal text-center"> <!-- Increased padding and text size -->
                 FORM PENDAFTARAN KARYAWAN BARU
