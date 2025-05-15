@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan Baru</h1>
+<h1 style="font-family: 'BD-Wurst'" class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan Baru</h1>
 <div class="container">
-    <table class="table table-bordered table-dark border-2" style="border: 2px solid #0d6efd;">
-        <thead class="align-middle table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
+    <table class="table table-bordered border-2" style="border: 2px solid #0d6efd;">
+        <thead class="align-middle text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>
                 <th style="width: 60px">No</th>
                 <th>Kode Lamaran</th>

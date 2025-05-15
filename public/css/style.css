@@ -241,6 +241,13 @@
   }
 }
 
+@font-face {
+  font-family: 'BD-Wurst';
+  src: url('/fonts/BD-Wurst.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: var(--cui-body-font-family);

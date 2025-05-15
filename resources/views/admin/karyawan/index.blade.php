@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan</h1>
+<h1 style="font-family: 'BD-Wurst'" class="text-white text-center mb-4 h1 bg-primary p-3">Daftar Karyawan</h1>
 <div class="container">
     @if(session('success'))
         <div class="alert alert-success">
@@ -12,8 +12,8 @@
         <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
     @endif
 
-    <table class="table table-bordered table-dark border-2" style="border: 2px solid #0d6efd;">
-        <thead class="align-middle table-dark text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
+    <table class="table table-bordered border-2" style="border: 2px solid #0d6efd;">
+        <thead class="align-middle text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>
                 <th style="width: 60px">No</th>
                 <th>NIK</th>

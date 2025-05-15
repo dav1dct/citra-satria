@@ -25,12 +25,10 @@
     <div class="flex items-center justify-between w-full flex-wrap">
         <!-- Logo -->
         <div class="flex items-center gap-2">
-            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo PT Citra Satria Utama" class="w-16 h-16">
-            <h1 class="text-white font-bold text-2xl" style="font-family: 'Iceland', sans-serif;">
-                <span style="color: red;">CITRA</span><br><span style="color: green;">SAT</span><span style="color: lightblue;">RIA</span><br>
-                <span style="color: orange;">UT</span><span style="color: yellow;">AMA</span>
+            <img src="{{ asset('assets/img/logoFull.png') }}" alt="Logo PT Citra Satria Utama" class="w-16 h-16">
+            <h1 class="text-white font-bold text-2xl" style="font-family: 'BD-Wurst', sans-serif;">
             </h1>
-            <p class="text-white">Komplek Pergudangan Skypark Bizz, Jl. Bypass Alang-Alang Lebar Blok A4-A7,<br> Talang Kelapa, Alang-Alang Lebar, Palembang City, South Sumatra 30154</p>
+            <p style="font-family: 'BD-Wurst'" class="text-black dark:text-white">Komplek Pergudangan Skypark Bizz,<br>  Jl. Bypass Alang-Alang Lebar Blok A4-A7,<br> Talang Kelapa, Alang-Alang Lebar, Palembang City, South Sumatra 30154</p>
         </div>
         
         <!-- Tombol Login/Register -->
