@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 style="font-family: 'BD-Wurst'" class="text-white text-center mb-4 h1 bg-primary p-3">Edit Karyawan</h1>
+<h1 style="font-family: 'BD-Wurst'" class="text-white text-center mb-4 h1 bg-gray-800 p-4">Edit Karyawan</h1>
 <div class="container">
     <form action="{{ route('karyawan.update', $karyawan->id) }}" method="POST">
         @csrf
