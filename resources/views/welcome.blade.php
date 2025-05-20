@@ -62,17 +62,17 @@
         <p class="text-white dark:text-white text-center">Belum ada pengumuman tersedia.</p>
     @endif
 
-    <div class="mt-8 text-center text-black dark:text-white">
-        <label class="inline-flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" id="agreeCheckbox" class="form-checkbox h-5 w-5 text-blue-600">
-            <span>Saya ingin melamar</span>
+    <div class="my-4">
+        <label class="inline-flex items-center">
+            <input type="checkbox" id="toggleDaftar" class="form-checkbox text-blue-600">
+            <span class="ml-2 text-black dark:text-white" style="font-inter; font-weight: bold">Saya ingin melamar</span>
         </label>
     </div>
 
-    <div class="mt-4 w-full lg:w-[438px]">
-        <a id="daftarButton"
-        class="inline-block w-full px-8 py-4 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-lg leading-normal text-center opacity-50 pointer-events-none"
-        style="font-family: 'BD-Wurst'">
+    <div id="daftarContainer" class="hidden mt-4 w-full lg:w-[438px]">
+        <a href="{{ url('/daftar') }}"
+        class="inline-block w-full px-8 py-4 dark:text-[#EDEDEC] border-2 border-[#19140035] hover:border-[#1915014a] text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-lg leading-normal text-center"
+        style="font-inter; font-weight: bold">
         FORM PENDAFTARAN KARYAWAN BARU
         </a>
     </div>
@@ -83,18 +83,16 @@
     @endif
     
     <script>
-    const checkbox = document.getElementById('agreeCheckbox');
-    const button = document.getElementById('daftarButton');
+    const checkbox = document.getElementById('toggleDaftar');
+    const daftarContainer = document.getElementById('daftarContainer');
 
-    checkbox.addEventListener('change', function () {
-        if (this.checked) {
-            button.setAttribute('href', "{{ url('/daftar') }}");
-            button.classList.remove('pointer-events-none', 'opacity-50');
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            daftarContainer.classList.remove('hidden');
         } else {
-            button.removeAttribute('href');
-            button.classList.add('pointer-events-none', 'opacity-50');
+            daftarContainer.classList.add('hidden');
         }
     });
-    </script>   
+</script> 
 </body>
 </html>

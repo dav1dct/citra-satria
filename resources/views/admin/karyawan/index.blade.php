@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 style="font-family: 'BD-Wurst'" class="text-white text-center mb-4 h1 bg-gray-800 p-4">Daftar Karyawan</h1>
+<h1 style="font-inter; font-weight: bold" class="text-white text-center mb-4 h1 bg-gray-800 p-4">DAFTAR KARYAWAN</h1>
 <div class="container">
     @if(session('success'))
         <div class="alert alert-success">

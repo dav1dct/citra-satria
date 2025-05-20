@@ -1,7 +1,7 @@
 @extends('layouts.form')
 
 @section('content')
-    <h1 class="text-white text-center mb-6 h1 bg-gray-800 p-4 rounded">Edit Status Karyawan</h1>
+    <h1 style="font-inter; font-weight: bold" class="text-white text-center mb-6 h1 bg-gray-800 p-4 rounded">EDIT KARYAWAN BARU</h1>
 
     <div class="w-full max-w-md mx-auto p-6 bg-gray-800 rounded shadow-md">
         <form action="{{ route('karyawanbaru.updateStatus', $karyawan->id) }}" method="POST">
