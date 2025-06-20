@@ -10,7 +10,7 @@ class KaryawanBaruController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role !== 'admin' && auth()->user()->role !== 'hsd') {
+        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
             abort(403, 'Anda tidak memiliki akses.');
         }
 
@@ -39,11 +39,11 @@ class KaryawanBaruController extends Controller
             'cv' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
             'ijazah' => 'required|file|mimes:pdf,jpg,jpeg,png|max:10240',
         ]);
-    
+
         $cvPath = $request->file('cv')->store('uploads/cv', 'public');
-        $fotoIdentitasPath = $request->file('foto_identitas')->store('uploads/foto', 'public');
+        $fotoPath = $request->file('foto_identitas')->store('uploads/foto', 'public');
         $ijazahPath = $request->file('ijazah')->store('uploads/ijazah', 'public');
-        $suratPath = $request->file('surat_lamaran')->store('uploads/surat', 'public');        
+        $suratPath = $request->file('surat_lamaran')->store('uploads/surat', 'public');
 
         KaryawanBaru::create([
             'kode_lamaran' => $validated['kode_lamaran'],
@@ -56,61 +56,77 @@ class KaryawanBaruController extends Controller
             'alamat' => $validated['alamat'],
             'status' => 'Menunggu',
             'surat_lamaran' => $suratPath,
-            'foto_identitas' => $fotoIdentitasPath,
+            'foto_identitas' => $fotoPath,
             'cv' => $cvPath,
             'ijazah' => $ijazahPath,
         ]);
-    
+
         return redirect()->route('karyawanbaru.success')->with('success', 'Data karyawan berhasil ditambahkan.');
     }
-    
+
     public function success()
     {
         return view('karyawanbaru.success');
     }
+
     public function updateStatus(Request $request, $id)
     {
-    
-    if (auth()->user()->role !== 'admin') {
-        abort(403, 'Hanya admin yang dapat mengedit data.');
+        if (auth()->user()->role !== 'admin') {
+            abort(403, 'Hanya admin yang dapat mengedit data.');
+        }
+
+        $request->validate([
+            'status' => 'required|in:Menunggu,Diterima,Ditolak',
+        ]);
+
+        $karyawan = KaryawanBaru::findOrFail($id);
+        $karyawan->status = $request->status;
+        $karyawan->save();
+
+        return redirect()->route('karyawanbaru.index')->with('success', 'Status berhasil diperbarui.');
     }
 
-    $request->validate([
-        'status' => 'required|in:Menunggu,Diterima,Ditolak',
-    ]);
-
-    $karyawan = KaryawanBaru::findOrFail($id);
-    $karyawan->status = $request->status;
-    $karyawan->save();
-
-    return redirect()->route('karyawanbaru.index')->with('success', 'Status berhasil diperbarui.');
-    }
     public function edit($id)
     {
         if (auth()->user()->role !== 'admin') {
             abort(403, 'Hanya admin yang dapat mengedit data.');
         }
-        
+
         $karyawan = KaryawanBaru::findOrFail($id);
         return view('karyawanbaru.edit', compact('karyawan'));
-    }        
+    }
+
     public function download($id, $file)
     {
-    $karyawan = KaryawanBaru::findOrFail($id);
+        $allowed = ['cv', 'foto_identitas', 'ijazah', 'surat_lamaran'];
+        if (!in_array($file, $allowed)) {
+            abort(403, 'Akses file tidak valid.');
+        }
 
-    $allowed = ['cv', 'foto_identitas', 'ijazah', 'surat_lamaran'];
-    if (!in_array($file, $allowed)) {
-        abort(403, 'Akses file tidak valid.');
+        $karyawan = KaryawanBaru::findOrFail($id);
+        $path = $karyawan->{$file};
+
+        if (!$path || !Storage::disk('public')->exists($path)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        return Storage::disk('public')->download($path, basename($path));
     }
 
-    $path = $karyawan->{$file};
+    public function showImage($id, $file)
+    {
+        $allowed = ['foto_identitas'];
+        if (!in_array($file, $allowed)) {
+            abort(403, 'Akses file tidak valid.');
+        }
 
-    if (!$path || !Storage::disk('public')->exists($path)) {
-        abort(404, 'File tidak ditemukan.');
+        $karyawan = KaryawanBaru::findOrFail($id);
+        $path = $karyawan->{$file};
+
+        if (!$path || !Storage::disk('public')->exists($path)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        return response()->file(Storage::disk('public')->path($path));
     }
-
-    return Storage::disk('public')->download($path);
 }
-
-}
-    
