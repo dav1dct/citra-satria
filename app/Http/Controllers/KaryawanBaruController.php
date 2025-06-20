@@ -98,7 +98,6 @@ class KaryawanBaruController extends Controller
     {
     $karyawan = KaryawanBaru::findOrFail($id);
 
-    // Validasi nama file yang diminta agar tidak sembarangan
     $allowed = ['cv', 'foto_identitas', 'ijazah', 'surat_lamaran'];
     if (!in_array($file, $allowed)) {
         abort(403, 'Akses file tidak valid.');
