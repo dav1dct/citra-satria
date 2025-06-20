@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KaryawanBaru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class KaryawanBaruController extends Controller
 {
@@ -93,5 +94,24 @@ class KaryawanBaruController extends Controller
         $karyawan = KaryawanBaru::findOrFail($id);
         return view('karyawanbaru.edit', compact('karyawan'));
     }        
+    public function download($id, $file)
+    {
+    $karyawan = KaryawanBaru::findOrFail($id);
+
+    // Validasi nama file yang diminta agar tidak sembarangan
+    $allowed = ['cv', 'foto_identitas', 'ijazah', 'surat_lamaran'];
+    if (!in_array($file, $allowed)) {
+        abort(403, 'Akses file tidak valid.');
+    }
+
+    $path = $karyawan->{$file};
+
+    if (!$path || !Storage::disk('public')->exists($path)) {
+        abort(404, 'File tidak ditemukan.');
+    }
+
+    return Storage::disk('public')->download($path);
+}
+
 }
     

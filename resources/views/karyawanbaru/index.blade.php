@@ -41,16 +41,17 @@
                     <td>{{ $kb->alamat }}</td>
                     <td>{{ $kb->status }}</td>
                     <td>
-                        <a href="{{ Storage::url($kb->surat_lamaran) }}" target="_blank" class="btn btn-info">Download Surat Lamaran</a>
+                        <a href="{{ route('karyawanbaru.download', [$kb->id, 'surat_lamaran']) }}" class="btn btn-info">Download Surat Lamaran</a>
                     </td>
                     <td>
-                        <img src="{{ Storage::url($kb->foto_identitas) }}" alt="Foto Identitas" width="50" class="img-fluid">
+                        <img src="{{ Storage::url($kb->foto_identitas) }}" alt="Foto Identitas" width="50" class="img-fluid mb-1"><br>
+                        <a href="{{ route('karyawanbaru.download', [$kb->id, 'foto_identitas']) }}" class="btn btn-sm btn-info mt-1">Download Foto</a>
                     </td>
                     <td>
-                        <a href="{{ Storage::url($kb->cv) }}" target="_blank" class="btn btn-info">Download CV</a>
+                        <a href="{{ route('karyawanbaru.download', [$kb->id, 'cv']) }}" class="btn btn-info">Download CV</a>
                     </td>
                     <td>
-                        <a href="{{ Storage::url($kb->ijazah) }}" target="_blank" class="btn btn-info">Download Ijazah</a>
+                        <a href="{{ route('karyawanbaru.download', [$kb->id, 'ijazah']) }}" class="btn btn-info">Download Ijazah</a>
                     </td>
                     @if(auth()->user()->role === 'admin')
                     <td>

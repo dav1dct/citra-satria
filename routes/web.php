@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
     Route::put('/karyawanbaru/{id}/status', [KaryawanBaruController::class, 'updateStatus'])->name('karyawanbaru.updateStatus');
     Route::get('/karyawanbaru/{id}/edit', [KaryawanBaruController::class, 'edit'])->name('karyawanbaru.edit');
-
+    Route::get('/karyawanbaru/download/{id}/{file}', [KaryawanBaruController::class, 'download'])->name('karyawanbaru.download');
 });
 
 Route::middleware(['auth'])->group(function () {
