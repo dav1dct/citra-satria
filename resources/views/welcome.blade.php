@@ -56,7 +56,7 @@
     @if (Storage::disk('public')->exists('pengumuman.pdf'))
     <div class="pengumuman-container">
         <h2 class="pengumuman-title">PENGUMUMAN</h2>
-        <iframe src="{{ asset('storage/pengumuman.pdf') }}" class="pengumuman-frame" frameborder="0"></iframe>
+        <iframe src="{{ route('pengumuman.view') }}" class="pengumuman-frame" frameborder="0"></iframe>
     </div>
     @else
         <p class="text-white dark:text-white text-center">Belum ada pengumuman tersedia.</p>
@@ -76,7 +76,6 @@
         FORM PENDAFTARAN KARYAWAN BARU
         </a>
     </div>
-
 
     @if (Route::has('login'))
         <div class="h-14.5 hidden lg:block"></div>

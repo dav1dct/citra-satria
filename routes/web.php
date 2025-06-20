@@ -16,6 +16,16 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/pengumuman', function () {
+    $path = 'pengumuman.pdf';
+
+    if (!\Storage::disk('public')->exists($path)) {
+        abort(404, 'File tidak ditemukan.');
+    }
+
+    return response()->file(storage_path('app/public/' . $path));
+})->name('pengumuman.view');
+
 Route::get('/daftar', [KaryawanBaruController::class, 'create'])->name('karyawanbaru.create');
 Route::post('/karyawanbaru', [KaryawanBaruController::class, 'store'])->name('karyawanbaru.store');
 Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])->name('karyawanbaru.success');
