@@ -24,6 +24,9 @@
                 <th>Departemen</th>
                 <th>Status Kerja</th>
                 <th>Status Pernikahan</th>
+                <th>Alamat</th>
+                <th>Tanggal Lahir</th>
+                <th>No HP</th>
                 <th>Status</th>
                 <th>Tanggal Masuk</th>
                 <th>Tanggal Keluar</th>
@@ -44,6 +47,8 @@
                     <td class="text-center">{{ $k->departemen }}</td>
                     <td class="text-center">{{ $k->status_kerja }}</td>
                     <td class="text-center">{{ $k->status_pernikahan }}</td>
+                    <td class="text-center">{{ $k->alamat }}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($k->tanggal_lahir)->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $k->status }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($k->tanggal_masuk)->format('d-m-Y') }}</td>
                     <td class="text-center">
