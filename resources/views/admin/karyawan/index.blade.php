@@ -26,7 +26,6 @@
                 <th>Status Pernikahan</th>
                 <th>Alamat</th>
                 <th>Tanggal Lahir</th>
-                <th>No HP</th>
                 <th>Status</th>
                 <th>Tanggal Masuk</th>
                 <th>Tanggal Keluar</th>
