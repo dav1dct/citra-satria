@@ -56,11 +56,12 @@
     @if (Storage::disk('public')->exists('pengumuman.pdf'))
     <div class="pengumuman-container">
         <h2 class="pengumuman-title">PENGUMUMAN</h2>
-        <iframe src="{{ route('pengumuman.view') }}" class="pengumuman-frame" frameborder="0"></iframe>
+        <iframe src="{{ route('pengumuman.view') }}?v={{ now()->timestamp }}" class="pengumuman-frame" frameborder="0"></iframe>
     </div>
     @else
         <p class="text-white dark:text-white text-center">Belum ada pengumuman tersedia.</p>
     @endif
+
 
     <div class="my-4">
         <label class="inline-flex items-center">
