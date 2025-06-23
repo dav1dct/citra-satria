@@ -9,26 +9,26 @@
             @method('PUT')
             <div class="mb-4">
                 <x-input-label for="kode_lamaran" :value="__('Kode Lamaran')" />
-                <x-text-input id="kode_lamaran" class="block mt-1 w-full bg-gray-700 text-white" type="text" name="kode_lamaran" :value="$karyawan->kode_lamaran" disabled />
+                <x-text-input id="kode_lamaran" class="block mt-1 w-full bg-gray-700 text-black" type="text" name="kode_lamaran" :value="$karyawan->kode_lamaran" disabled />
             </div>
             <div class="mb-4">
                 <x-input-label for="nama_lengkap" :value="__('Nama Lengkap')" />
-                <x-text-input id="nama_lengkap" class="block mt-1 w-full bg-gray-700 text-white" type="text" name="nama_lengkap" :value="$karyawan->nama_lengkap" disabled />
+                <x-text-input id="nama_lengkap" class="block mt-1 w-full bg-gray-700 text-black" type="text" name="nama_lengkap" :value="$karyawan->nama_lengkap" disabled />
             </div>
 
             <div class="mb-4">
                 <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full bg-gray-700 text-white" type="email" name="email" :value="$karyawan->email" disabled />
+                <x-text-input id="email" class="block mt-1 w-full bg-gray-700 text-black" type="email" name="email" :value="$karyawan->email" disabled />
             </div>
 
             <div class="mb-4">
                 <x-input-label for="no_hp" :value="__('Nomor HP')" />
-                <x-text-input id="no_hp" class="block mt-1 w-full bg-gray-700 text-white" type="text" name="no_hp" :value="$karyawan->no_hp" disabled />
+                <x-text-input id="no_hp" class="block mt-1 w-full bg-gray-700 text-black" type="text" name="no_hp" :value="$karyawan->no_hp" disabled />
             </div>
 
             <div class="mb-4">
                 <x-input-label for="tanggal_lahir" :value="__('Tanggal Lahir')" />
-                <x-text-input id="tanggal_lahir" class="block mt-1 w-full bg-gray-700 text-white" type="date" name="tanggal_lahir" :value="$karyawan->tanggal_lahir" disabled />
+                <x-text-input id="tanggal_lahir" class="block mt-1 w-full bg-gray-700 text-black" type="date" name="tanggal_lahir" :value="$karyawan->tanggal_lahir" disabled />
             </div>
 
             <div class="mb-4">
