@@ -16,11 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
-                        {{ __('Karyawan Baru') }}
-                    </x-nav-link>
-                </div>
+                @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
+                            {{ __('Karyawan Baru') }}
+                        </x-nav-link>
+                    </div>
+                @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('karyawan.index')" :active="request()->routeIs('karyawan.index')">
                         {{ __('Karyawan') }}
@@ -77,12 +79,15 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden text-black">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
-                {{ __('Karyawan Baru') }}
-            </x-responsive-nav-link>
-        </div>
+        @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
+            <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden text-black">
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
+                        {{ __('Karyawan Baru') }}
+                    </x-responsive-nav-link>
+                </div>
+            </div>
+        @endif
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden text-black">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('karyawan.index')" :active="request()->routeIs('karyawan.index')">
