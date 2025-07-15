@@ -8,6 +8,9 @@
             {{ session('success') }}
         </div>
     @endif
+    @if(auth()->user()->role === 'admin')
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+    @endif
     @if(in_array(auth()->user()->role, ['admin', 'hsd']))
     <div class="mb-3">
         <a href="{{ route('karyawan.export') }}" class="btn btn-success">
