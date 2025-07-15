@@ -71,7 +71,7 @@ class KaryawanBaruController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        if (auth()->user()->role !== 'admin') {
+        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
             abort(403, 'Hanya admin yang dapat mengedit data.');
         }
 
@@ -88,7 +88,7 @@ class KaryawanBaruController extends Controller
 
     public function edit($id)
     {
-        if (auth()->user()->role !== 'admin') {
+        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
             abort(403, 'Hanya admin yang dapat mengedit data.');
         }
 

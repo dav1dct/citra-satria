@@ -22,9 +22,10 @@
                 <th>Foto Identitas</th>
                 <th>CV</th>
                 <th>Ijazah</th>
-                @if(auth()->user()->role === 'admin')
+                @if(in_array(auth()->user()->role, ['admin', 'hsd']))
                     <th>Aksi</th>
                 @endif
+
             </tr>
         </thead>
         <tbody>
@@ -73,7 +74,7 @@
                         </a>
                     </td>
 
-                    @if(auth()->user()->role === 'admin')
+                    @if(in_array(auth()->user()->role, ['admin', 'hsd']))
                         <td>
                             <a href="{{ route('karyawanbaru.edit', $kb) }}" class="btn btn-warning btn-sm">
                                 Edit
