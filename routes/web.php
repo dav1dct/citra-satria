@@ -18,14 +18,13 @@ Route::get('/', function () {
 
 Route::get('/pengumuman', function () {
     $path = 'pengumuman.pdf';
-
     if (!\Storage::disk('public')->exists($path)) {
         abort(404, 'File tidak ditemukan.');
     }
-
     return response()->file(storage_path('app/public/' . $path));
 })->name('pengumuman.view');
 
+// Formulir pendaftaran karyawan baru (public)
 Route::get('/daftar', [KaryawanBaruController::class, 'create'])->name('karyawanbaru.create');
 Route::post('/karyawanbaru', [KaryawanBaruController::class, 'store'])->name('karyawanbaru.store');
 Route::get('/karyawanbaru/success', [KaryawanBaruController::class, 'success'])->name('karyawanbaru.success');
@@ -42,27 +41,32 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware(['verified'])
         ->name('dashboard');
-    Route::post('/dashboard/uploadpdf', [DashboardController::class, 'uploadPDF'])
-        ->name('dashboard.upload.pdf');
+    Route::post('/dashboard/uploadpdf', [DashboardController::class, 'uploadPDF'])->name('dashboard.upload.pdf');
 
-    // Karyawan Baru
-    Route::get('/karyawanbaru', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
-    Route::put('/karyawanbaru/{id}/status', [KaryawanBaruController::class, 'updateStatus'])->name('karyawanbaru.updateStatus');
-    Route::get('/karyawanbaru/{id}/edit', [KaryawanBaruController::class, 'edit'])->name('karyawanbaru.edit');
-    Route::get('/karyawanbaru/download/{id}/{file}', [KaryawanBaruController::class, 'download'])->name('karyawanbaru.download');
-    Route::get('/karyawanbaru/image/{id}/{file}', [KaryawanBaruController::class, 'showImage'])->name('karyawanbaru.image');
+    // Karyawan Baru (admin & hsd)
+    Route::prefix('karyawanbaru')->group(function () {
+        Route::get('/', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
+        Route::get('/export', [KaryawanBaruController::class, 'exportExcel'])->name('karyawanbaru.export');
+        Route::put('/{id}/status', [KaryawanBaruController::class, 'updateStatus'])->name('karyawanbaru.updateStatus');
+        Route::get('/{id}/edit', [KaryawanBaruController::class, 'edit'])->name('karyawanbaru.edit');
+        Route::get('/download/{id}/{file}', [KaryawanBaruController::class, 'download'])->name('karyawanbaru.download');
+        Route::get('/image/{id}/{file}', [KaryawanBaruController::class, 'showImage'])->name('karyawanbaru.image');
+    });
 
     // Karyawan Admin
-    Route::get('/admin/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
-    Route::get('/admin/karyawan/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');
-    Route::post('/admin/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
-    Route::get('/admin/karyawan/{karyawan}/edit', [KaryawanController::class, 'edit'])->name('karyawan.edit');
-    Route::put('/admin/karyawan/{karyawan}', [KaryawanController::class, 'update'])->name('karyawan.update');
+    Route::prefix('admin/karyawan')->group(function () {
+        Route::get('/', [KaryawanController::class, 'index'])->name('karyawan.index');
+        Route::get('/export', [KaryawanController::class, 'exportExcel'])->name('karyawan.export');
+        Route::get('/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');
+        Route::post('/', [KaryawanController::class, 'store'])->name('karyawan.store');
+        Route::get('/{karyawan}/edit', [KaryawanController::class, 'edit'])->name('karyawan.edit');
+        Route::put('/{karyawan}', [KaryawanController::class, 'update'])->name('karyawan.update');
+    });
 });
 
 /*
 |--------------------------------------------------------------------------
-| Auth Routes (Login/Register/Forgot Password, dll)
+| Auth Routes
 |--------------------------------------------------------------------------
 */
 

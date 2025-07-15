@@ -26,4 +26,10 @@ class Karyawan extends Model
         'status_pernikahan', 
         'no_hp',              
     ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+        'tanggal_masuk' => 'date',
+        'tanggal_keluar' => 'date',
+    ];
 }

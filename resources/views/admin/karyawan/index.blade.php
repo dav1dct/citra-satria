@@ -8,10 +8,13 @@
             {{ session('success') }}
         </div>
     @endif
-    @if(auth()->user()->role === 'admin')
-        <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+    @if(in_array(auth()->user()->role, ['admin', 'hsd']))
+    <div class="mb-3">
+        <a href="{{ route('karyawan.export') }}" class="btn btn-success">
+            <i class="fas fa-file-excel"></i> Export ke Excel
+        </a>
+    </div>
     @endif
-
     <table class="table table-bordered border-2" style="border: 2px solid #0d6efd;">
         <thead class="align-middle text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>

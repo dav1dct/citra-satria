@@ -5,6 +5,13 @@
     DAFTAR KARYAWAN BARU
 </h1>
 <div class="container">
+    @if(in_array(auth()->user()->role, ['admin', 'hsd']))
+        <div class="mb-3">
+            <a href="{{ route('karyawanbaru.export') }}" class="btn btn-success">
+                <i class="fas fa-file-excel"></i> Export ke Excel
+            </a>
+        </div>
+    @endif
     <table class="table table-bordered border-2" style="border: 2px solid #0d6efd;">
         <thead class="align-middle text-center fw-bold fs-5" style="border: 2px solid #0d6efd;">
             <tr>

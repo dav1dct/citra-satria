@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use App\Exports\KaryawanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KaryawanController extends Controller
 {
@@ -12,7 +14,14 @@ class KaryawanController extends Controller
         $karyawans = Karyawan::all();
         return view('admin.karyawan.index', compact('karyawans'));
     }
-
+    public function exportExcel()
+    {
+        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+    
+        return Excel::download(new KaryawanExport, 'karyawan.xlsx');
+    }
     public function create()
     {
         if (auth()->user()->role !== 'admin') {
