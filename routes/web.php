@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard');
     Route::post('/dashboard/uploadpdf', [DashboardController::class, 'uploadPDF'])->name('dashboard.upload.pdf');
 
-    // Karyawan Baru (admin & hsd)
+    // Karyawan Baru
     Route::prefix('karyawanbaru')->group(function () {
         Route::get('/', [KaryawanBaruController::class, 'index'])->name('karyawanbaru.index');
         Route::get('/export', [KaryawanBaruController::class, 'exportExcel'])->name('karyawanbaru.export');
@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/image/{id}/{file}', [KaryawanBaruController::class, 'showImage'])->name('karyawanbaru.image');
     });
 
-    // Karyawan Admin
+    // Karyawan
     Route::prefix('karyawan')->group(function () {
         Route::get('/', [KaryawanController::class, 'index'])->name('karyawan.index');
         Route::get('/export', [KaryawanController::class, 'exportExcel'])->name('karyawan.export');

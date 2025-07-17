@@ -11,19 +11,17 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
-            abort(403, 'Anda tidak memiliki akses.');
-        }
-        
-        $jumlahKaryawan = Karyawan::count();
+        $jumlahKaryawan = null;
         $jumlahKaryawanBaru = null;
     
         if (auth()->user()->role === 'admin' || auth()->user()->role === 'hsd') {
+            $jumlahKaryawan = Karyawan::count();
             $jumlahKaryawanBaru = KaryawanBaru::count();
         }
-
+    
         return view('dashboard', compact('jumlahKaryawan', 'jumlahKaryawanBaru'));
     }
+    
 
     public function uploadPDF(Request $request)
     {

@@ -3,18 +3,19 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
+    @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
     <div class="grid grid-cols-1 md:grid-cols-2 gap-1 mb-6 text-white">
         <div class="bg-gray-800 p-4 shadow">
             <h3 class="text-lg font-semibold">Jumlah Karyawan</h3>
             <p class="text-2xl">{{ $jumlahKaryawan }}</p>
         </div>
-        @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
         <div class="bg-gray-800 p-4 shadow">
             <h3 class="text-lg font-semibold">Jumlah Karyawan Baru</h3>
             <p class="text-2xl">{{ $jumlahKaryawanBaru }}</p>
         </div>
-        @endif
     </div>
+    @endif
+
 
     <section class="bg-white dark:bg-[#161615] border-4 border-black text-gray-800 dark:text-gray-200 p-8 shadow-md w-full max-w-3xl mx-auto mt-10 text-center">
     <h1 style="font-size: 36px" class="font-bold mb-6 pb-3">
