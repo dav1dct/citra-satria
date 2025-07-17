@@ -8,7 +8,7 @@
             {{ session('success') }}
         </div>
     @endif
-    @if(auth()->user()->role === 'admin')
+    @if(auth()->user()->role === 'hsd')
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
     @endif
     @if(in_array(auth()->user()->role, ['admin', 'hsd']))
@@ -26,20 +26,23 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>No HP</th>
+                <th>Alamat</th>
+                <th>Tanggal Lahir</th>
+                <th>Pendidikan</th>
                 <th>Posisi</th>
                 <th>Departemen</th>
                 <th>Status Kerja</th>
                 <th>Status Pernikahan</th>
-                <th>Alamat</th>
-                <th>Tanggal Lahir</th>
+                <th>No Rekening</th>
                 <th>Status</th>
                 <th>Tanggal Masuk</th>
                 <th>Tanggal Keluar</th>
-                @if(auth()->user()->role === 'admin')
+                @if(auth()->user()->role === 'hsd')
                 <th style="width: 1%; white-space: nowrap;">Aksi</th>
                 @endif
             </tr>
         </thead>
+
         <tbody>
             @foreach($karyawans as $index => $k)
                 <tr>
@@ -48,12 +51,14 @@
                     <td>{{ $k->nama_lengkap }}</td>
                     <td>{{ $k->email }}</td>
                     <td class="text-center">{{ $k->no_hp }}</td>
+                    <td class="text-center">{{ $k->alamat }}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($k->tanggal_lahir)->format('d-m-Y') }}</td>
+                    <td class="text-center">{{ $k->pendidikan }}</td>
                     <td class="text-center">{{ $k->posisi }}</td>
                     <td class="text-center">{{ $k->departemen }}</td>
                     <td class="text-center">{{ $k->status_kerja }}</td>
                     <td class="text-center">{{ $k->status_pernikahan }}</td>
-                    <td class="text-center">{{ $k->alamat }}</td>
-                    <td class="text-center">{{ \Carbon\Carbon::parse($k->tanggal_lahir)->format('d-m-Y') }}</td>
+                    <td class="text-center">{{ $k->no_rekening }}</td>
                     <td class="text-center">{{ $k->status }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($k->tanggal_masuk)->format('d-m-Y') }}</td>
                     <td class="text-center">
@@ -63,10 +68,10 @@
                             -
                         @endif
                     </td>
-                    @if(auth()->user()->role === 'admin')
-                    <td>
+                    @if(auth()->user()->role === 'hsd')
+                        <td>
                             <a href="{{ route('karyawan.edit', $k) }}" class="btn btn-warning">Edit</a>
-                    </td>
+                        </td>
                     @endif
                 </tr>
             @endforeach

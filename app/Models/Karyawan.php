@@ -24,7 +24,9 @@ class Karyawan extends Model
         'tanggal_keluar',    
         'status_kerja',       
         'status_pernikahan', 
-        'no_hp',              
+        'no_hp',  
+        'pendidikan',
+        'no_rekening',            
     ];
 
     protected $casts = [

@@ -11,23 +11,23 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                @if(auth()->user()->role === 'admin' || auth()->user()->role === 'hsd')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
-                            {{ __('Karyawan Baru') }}
-                        </x-nav-link>
-                    </div>
-                @endif
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('karyawanbaru.index')" :active="request()->routeIs('karyawanbaru.index')">
+                        {{ __('Karyawan Baru') }}
+                    </x-nav-link>
+                </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('karyawan.index')" :active="request()->routeIs('karyawan.index')">
                         {{ __('Karyawan') }}
                     </x-nav-link>
                 </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
@@ -44,7 +44,6 @@
                             </div>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

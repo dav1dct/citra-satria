@@ -11,6 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
+            abort(403, 'Anda tidak memiliki akses.');
+        }
+        
         $jumlahKaryawan = Karyawan::count();
         $jumlahKaryawanBaru = null;
     

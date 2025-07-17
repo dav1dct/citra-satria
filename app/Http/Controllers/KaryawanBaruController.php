@@ -81,8 +81,8 @@ class KaryawanBaruController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
-            abort(403, 'Hanya admin yang dapat mengedit data.');
+        if (!in_array(auth()->user()->role, ['hsd'])) {
+            abort(403, 'Hanya HSD yang dapat mengedit data.');
         }
 
         $request->validate([
@@ -98,8 +98,8 @@ class KaryawanBaruController extends Controller
 
     public function edit($id)
     {
-        if (!in_array(auth()->user()->role, ['admin', 'hsd'])) {
-            abort(403, 'Hanya admin yang dapat mengedit data.');
+        if (!in_array(auth()->user()->role, ['hsd'])) {
+            abort(403, 'Hanya HSD yang dapat mengedit data.');
         }
 
         $karyawan = KaryawanBaru::findOrFail($id);

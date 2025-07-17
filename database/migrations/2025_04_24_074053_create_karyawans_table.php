@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('status', ['Aktif', 'Tidak Aktif', 'Menunggu'])->default('Menunggu');
             $table->date('tanggal_masuk');
             $table->date('tanggal_keluar')->nullable();
-            $table->date('tanggal_lahir')->nullable();
+            $table->date('tanggal_lahir');
             $table->timestamps();
         });
     }

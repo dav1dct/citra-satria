@@ -17,46 +17,50 @@ class KaryawanExport implements FromCollection, WithHeadings, WithMapping
     }
 
     public function map($karyawan): array
-    {
-        $this->index++;
+{
+    $this->index++;
 
-        return [
-            $this->index,
-            $karyawan->nik,
-            $karyawan->nama_lengkap,
-            $karyawan->email,
-            "'" . $karyawan->no_hp,
-            $karyawan->posisi,
-            $karyawan->departemen,
-            $karyawan->status_kerja,
-            $karyawan->status_pernikahan,
-            $karyawan->alamat,
-            $this->formatDate($karyawan->tanggal_lahir),
-            $karyawan->status,
-            $this->formatDate($karyawan->tanggal_masuk),
-            $karyawan->tanggal_keluar ? $this->formatDate($karyawan->tanggal_keluar) : '-',
-        ];
-    }
+    return [
+        $this->index,
+        $karyawan->nik,
+        $karyawan->nama_lengkap,
+        $karyawan->email,
+        "'" . $karyawan->no_hp,
+        $karyawan->alamat,
+        $this->formatDate($karyawan->tanggal_lahir),
+        $karyawan->pendidikan,
+        $karyawan->posisi,
+        $karyawan->departemen,
+        $karyawan->status_kerja,
+        $karyawan->status_pernikahan,
+        $karyawan->no_rekening,
+        $karyawan->status,
+        $this->formatDate($karyawan->tanggal_masuk),
+        $karyawan->tanggal_keluar ? $this->formatDate($karyawan->tanggal_keluar) : '-',
+    ];
+}
 
-    public function headings(): array
-    {
-        return [
-            'No',
-            'NIK',
-            'Nama',
-            'Email',
-            'No HP',
-            'Posisi',
-            'Departemen',
-            'Status Kerja',
-            'Status Pernikahan',
-            'Alamat',
-            'Tanggal Lahir',
-            'Status',
-            'Tanggal Masuk',
-            'Tanggal Keluar',
-        ];
-    }
+public function headings(): array
+{
+    return [
+        'No',
+        'NIK',
+        'Nama',
+        'Email',
+        'No HP',
+        'Alamat',
+        'Tanggal Lahir',
+        'Pendidikan',
+        'Posisi',
+        'Departemen',
+        'Status Kerja',
+        'Status Pernikahan',
+        'No Rekening',
+        'Status',
+        'Tanggal Masuk',
+        'Tanggal Keluar',
+    ];
+}
 
     private function formatDate($date)
     {

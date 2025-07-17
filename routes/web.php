@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // Karyawan Admin
-    Route::prefix('admin/karyawan')->group(function () {
+    Route::prefix('karyawan')->group(function () {
         Route::get('/', [KaryawanController::class, 'index'])->name('karyawan.index');
         Route::get('/export', [KaryawanController::class, 'exportExcel'])->name('karyawan.export');
         Route::get('/tambah', [KaryawanController::class, 'create'])->name('karyawan.create');
