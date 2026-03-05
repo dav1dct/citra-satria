@@ -10,11 +10,14 @@
     @endif
 <<<<<<< HEAD:resources/views/karyawan/index.blade.php
 <<<<<<< HEAD:resources/views/karyawan/index.blade.php
+<<<<<<< HEAD:resources/views/karyawan/index.blade.php
     @if(auth()->user()->role === 'hsd')
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
     @endif
     @if(in_array(auth()->user()->role, ['hsd']))
 =======
+=======
+>>>>>>> parent of b634018 (Fixed missing tambah karyawan button on karyawan.index):resources/views/admin/karyawan/index.blade.php
 =======
 >>>>>>> parent of b634018 (Fixed missing tambah karyawan button on karyawan.index):resources/views/admin/karyawan/index.blade.php
     @if(in_array(auth()->user()->role, ['admin', 'hsd']))
