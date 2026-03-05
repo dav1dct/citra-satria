@@ -11,7 +11,7 @@
     @if(auth()->user()->role === 'hsd')
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
     @endif
-    @if(in_array(auth()->user()->role, ['admin', 'hsd']))
+    @if(in_array(auth()->user()->role, ['hsd']))
     <div class="mb-3">
         <a href="{{ route('karyawan.export') }}" class="btn btn-success">
             <i class="fas fa-file-excel"></i> Export ke Excel
